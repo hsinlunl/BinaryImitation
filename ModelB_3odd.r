@@ -6,15 +6,7 @@ n <- n1+n2
 
 # ----- Check for consensus or alternating state -----
 is_alternating_state <- function(g, opinions) {
-  edges <- as_edgelist(g)
-  for (e in 1:nrow(edges)) {
-    v1 <- as.integer(edges[e, 1])
-    v2 <- as.integer(edges[e, 2])
-    if (opinions[v1] == opinions[v2]) {
       return(FALSE)
-    }
-  }
-  return(TRUE)
 }
 
 has_converged <- function(g, opinions) {
