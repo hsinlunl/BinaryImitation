@@ -64,13 +64,6 @@ simulate_model <- function(g, m = 1000) {
 # ----- Example -----
 set.seed(123)
 start_time <- Sys.time()
-#repeat {
-  # Generate random bipartite graph
-#  g <- sample_bipartite(n1, n2, type = "gnp", p = 0.01)
-
-  # Check if the graph is connected
-#  if (is.connected(g)) break
-#}
 
 # Generate a connected Erdős–Rényi graph
 repeat {
