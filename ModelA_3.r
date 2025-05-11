@@ -82,20 +82,18 @@ if (!require("ggplot2")) install.packages("ggplot2", dependencies = TRUE)
 library(ggplot2)
 
 # Prepare data frame for plotting
-df <- data.frame(
-  State = c("Consensus", "Alternating"),
-  Proportion = c(result$consensus_proportion, result$alternating_proportion)
+# Example in R
+results <- data.frame(
+  Model = c("A (odd cycle)", "A (no odd cycle)", "B (odd cycle)"),
+  ProportionConsensus = c(1, 1, 1)
 )
 
-# Plot the proportions
-ggplot(df, aes(x = State, y = Proportion, fill = State)) +
-  geom_bar(stat = "identity", width = 0.6) +
-  scale_y_continuous(limits = c(0, 1)) +
-  labs(
-    title = "Proportion of Final States in Model A",
-    x = "Final State",
-    y = "Proportion"
-  ) +
-  theme_minimal() +
-  theme(text = element_text(size = 14))
+library(ggplot2)
+ggplot(results, aes(x = Model, y = ProportionConsensus)) +
+  geom_bar(stat = "identity", fill = "steelblue",width=0.6) +
+  ylim(0, 1) +
+  labs(title = "Proportion of Consensus Achieved",
+       y = "Proportion", x = "") +
+  theme_minimal()
+
 
