@@ -1,5 +1,5 @@
 library(igraph)
-n <- 10000
+n <- 1000
 n1 <- n/2  # size of partition 1
 n2 <- n/2  # size of partition 2
 
