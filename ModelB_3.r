@@ -1,5 +1,5 @@
 library(igraph)
-n <- 1000
+n <- 10000
 n1 <- n/2  # size of partition 1
 n2 <- n/2  # size of partition 2
 
@@ -73,7 +73,6 @@ set.seed(123)
 start_time <- Sys.time()
 repeat {
   # Generate random bipartite graph
-  #g <- sample_bipartite(n1, n2, type = "gnp", p = 0.01)
   g <- sample_bipartite(n1, n2, type = "gnp", p = 0.1)
   # Check if the graph is connected
   if (is.connected(g)) break
