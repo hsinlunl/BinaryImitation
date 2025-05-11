@@ -1,7 +1,9 @@
 library(igraph)
-
-n1 <- 500  # size of partition 1
-n2 <- 500  # size of partition 2
+#n <- 1000
+n <- 100
+#n <- 10
+n1 <- n/2  # size of partition 1
+n2 <- n/2  # size of partition 2
 
 # ----- Check for consensus or alternating state -----
 is_alternating_state <- function(g, opinions) {
