@@ -97,7 +97,7 @@ ggplot(df, aes(x = State, y = Proportion, fill = State)) +
   geom_bar(stat = "identity", width = 0.6) +
   scale_y_continuous(limits = c(0, 1)) +
   labs(
-    title = "Proportion of Final States in Model B",
+    title = "Proportion of Final States in Model B without odd cycles",
     x = "Final State",
     y = "Proportion"
   ) +
