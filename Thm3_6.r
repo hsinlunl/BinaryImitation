@@ -41,6 +41,7 @@ run_model_c_tie <- function(g) {
   return("diverge")
 }
 
+set.seed(42)
 # Create graph with even degree (to allow for tie state)
 g <- sample_k_regular(no.of.nodes = n, k = 6)  # Regular graph of even degree
 
