@@ -5,7 +5,7 @@ library(igraph)
 # Parameters
 q_s <- 0.1   # Flip when majority agrees
 q_d <- 0     # No flip when majority disagrees
-n <- 100     # Number of agents (nodes)
+n <- 1000     # Number of agents (nodes)
 simulations <- 1000  # Number of trials
 max_iter <- 10000    # Max steps per simulation
 
@@ -38,8 +38,10 @@ run_model_c_once <- function(g) {
 # ---- Run Many Simulations ----
 
 set.seed(42)
+repeat{
 g <- sample_gnp(n, p = 0.1)  # Erdos-Renyi random graph (connected)
-if (!is.connected(g)) g <- components(g)$membership  # Ensure connectivity
+if (is.connected(g)) break
+}
 
 consensus_count <- 0
 for (i in 1:simulations) {
