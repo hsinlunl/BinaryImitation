@@ -44,5 +44,5 @@ matplot(fractions_matrix, type = "l", lty = 1, col = rgb(0, 0, 1, 0.2),
         xlab = "Time step", ylab = "Fraction of opinion 1", 
         main = "Model B with an odd cycle: 1000 simulations on the same graph")
 
-saveRDS(fractions_matrix, file = "fractions_matrixModelBOdd.rds")
-fractions_matrix <- readRDS("fractions_matrixModelBOdd.rds")
+saveRDS(fractions_matrix, file = "fractions_matrixModelAOdd.rds")
+fractions_matrix <- readRDS("fractions_matrixModelAOdd.rds")
