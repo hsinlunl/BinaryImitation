@@ -55,3 +55,6 @@ for (i in 1:simulations) {
 matplot(fractions_matrix, type = "l", lty = 1, col = rgb(0, 0, 1, 0.1),
         xlab = "Time step", ylab = "Fraction of opinion 1",
         main = "Model C: 1000 Simulations of Opinion Dynamics")
+
+saveRDS(fractions_matrix, file = "fractions_matrix_ModelC.rds")
+fractions_matrix <- readRDS("fractions_matrix_ModelC.rds")
