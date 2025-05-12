@@ -8,7 +8,7 @@ n <- 1000
 p <- 0.1
 repeat {
   g <- erdos.renyi.game(n, p, directed = FALSE)
-  if (is.connected(g)) break
+  if (is.connected(g) && !is_bipartite(g)) break
 }
 
 for (sim in 1:num_simulations) {
