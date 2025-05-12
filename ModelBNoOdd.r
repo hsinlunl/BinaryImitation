@@ -97,3 +97,5 @@ ggplot(df_time, aes(x = Simulation)) +
        color = "Final State") +
   theme_minimal() +
   theme(text = element_text(size = 14))
+
+write.csv(df_time, "cumulative_proportions_modelBNoOdd.csv", row.names = FALSE)
