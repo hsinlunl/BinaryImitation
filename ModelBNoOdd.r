@@ -3,7 +3,7 @@ set.seed(123)
 n <- 1000 # number of vertices
 n1 <- n/2  # size of partition 1
 n2 <- n/2  # size of partition 2
-m <- 1000  # number of simulations
+m <- 10000  # number of simulations
 
 # ----- Check for consensus or alternating state -----
 is_alternating_state <- function(g, opinions) {
@@ -91,7 +91,7 @@ ggplot(df_time, aes(x = Simulation)) +
   geom_line(aes(y = Consensus, color = "Consensus"), size = 1) +
   geom_line(aes(y = Alternating, color = "Alternating"), size = 1) +
   scale_color_manual(values = c("Consensus" = "steelblue", "Alternating" = "firebrick")) +
-  labs(title = "Cumulative Proportion over Simulations (Model B without odd cycle)",
+  labs(title = "Cumulative Proportion over Simulations (Model B without an odd cycle)",
        x = "Simulation Number",
        y = "Cumulative Proportion",
        color = "Final State") +
