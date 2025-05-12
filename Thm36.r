@@ -48,8 +48,10 @@ run_model_c_tie_record <- function(g) {
 }
 
 set.seed(42)
-g <- sample_k_regular(no.of.nodes = n, k = 2)
-
+repeat{
+  g <- sample_k_regular(no.of.nodes = n, k = 2)
+  if(is.connected(g)) break
+}
 # Run simulations
 fractions_matrix <- matrix(NA, nrow = max_iter, ncol = simulations)
 for (i in 1:simulations) {
