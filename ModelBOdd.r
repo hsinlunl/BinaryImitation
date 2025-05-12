@@ -47,4 +47,4 @@ for (sim in 1:num_simulations) {
 # Plot the trajectories
 matplot(fractions_matrix, type = "l", lty = 1, col = rgb(0, 0, 1, 0.2),
         xlab = "Time step", ylab = "Fraction of opinion 1", 
-        main = "Model B: 100 simulations on same graph")
+        main = "Model B: 1000 simulations on the same graph")
