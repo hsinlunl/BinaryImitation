@@ -3,7 +3,7 @@ set.seed(123)
 n <- 1000 # number of vertices
 n1 <- n/2  # size of partition 1
 n2 <- n/2  # size of partition 2
-m <- 5000  # number of simulations
+m <- 1000  # number of simulations
 
 # ----- Check for consensus or alternating state -----
 is_alternating_state <- function(g, opinions) {
