@@ -1,7 +1,7 @@
 library(igraph)
 set.seed(123)
 num_simulations <- 1000
-max_steps <- 500
+max_steps <- 100
 fractions_matrix <- matrix(NA, nrow = max_steps, ncol = num_simulations)
 
 n <- 1000
