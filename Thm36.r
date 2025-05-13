@@ -21,7 +21,8 @@ is_global_tie <- function(g, opinions) {
 
 # Function: run one simulation and record fractions
 run_model_c_tie_record <- function(g) {
-  opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(0.2, 0.8))  # 80% agents start with 1
+  #opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(0.2, 0.8))  # 80% agents start with 1
+  opinions <- sample(c(0, 1), n, replace = TRUE)
   opinion_frac <- numeric(max_iter)
 
   for (t in 1:max_iter) {
