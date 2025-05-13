@@ -47,7 +47,7 @@ run_model_c_tie_record <- function(g) {
   return(opinion_frac)
 }
 
-set.seed(42)
+set.seed(123)
 g <- make_ring(n)
 #repeat{
 #  g <- sample_k_regular(no.of.nodes = n, k = 6)
