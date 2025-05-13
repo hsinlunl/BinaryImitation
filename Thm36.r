@@ -1,11 +1,11 @@
 library(igraph)
 
 # Parameters
-q_s <- 0.5
-q_d <- 0.5
+q_s <- 0.1
+q_d <- 0.001
 n <- 1000
-simulations <- 5
-max_iter <- 10000
+simulations <- 1
+max_iter <- 10^5
 
 # Function: check if current state is a global tie
 is_global_tie <- function(g, opinions) {
@@ -23,9 +23,12 @@ is_global_tie <- function(g, opinions) {
 run_model_c_tie_record <- function(g) {
   #opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(0.2, 0.8))  # 80% agents start with 1
   opinions <- sample(c(0, 1), n, replace = TRUE)
+#opinions <- c(rep(c(0,1), each=n/4), rep(c(0,1), each=n/4))
   opinion_frac <- numeric(max_iter)
 
   for (t in 1:max_iter) {
+if (t %% 100 == 0) cat("Completed", t, "iterations\n")
+
     k <- sample(1:vcount(g), 1)
     neigh <- neighbors(g, k)
     if (length(neigh) == 0) next
