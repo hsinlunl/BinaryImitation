@@ -4,7 +4,7 @@ library(igraph)
 q_s <- 0.9
 q_d <- 0.9
 n <- 1000
-simulations <- 1000
+simulations <- 100
 max_iter <- 10000
 
 # Function: check if current state is a global tie
@@ -48,11 +48,12 @@ run_model_c_tie_record <- function(g) {
 }
 
 set.seed(123)
-g <- make_ring(n)
+#g <- make_ring(n)
 #repeat{
 #  g <- sample_k_regular(no.of.nodes = n, k = 6)
 #  if(is.connected(g)) break
 #}
+g <- make_full_bipartite_graph(n/2, n/2)
 # Run simulations
 fractions_matrix <- matrix(NA, nrow = max_iter, ncol = simulations)
 for (i in 1:simulations) {
