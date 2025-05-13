@@ -3,7 +3,7 @@ library(igraph)
 # Parameters
 q_s <- 0.9
 q_d <- 0.9
-n <- 10
+n <- 12
 simulations <- 5
 max_iter <- 10000
 
