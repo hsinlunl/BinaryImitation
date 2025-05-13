@@ -3,8 +3,8 @@ library(igraph)
 # Parameters
 q_s <- 0.9
 q_d <- 0.9
-n <- 1000
-simulations <- 10
+n <- 10
+simulations <- 5
 max_iter <- 10000
 
 # Function: check if current state is a global tie
