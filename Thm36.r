@@ -61,7 +61,7 @@ for (i in 1:simulations) {
 }
 
 # Save to file
-#saveRDS(fractions_matrix, "fractions_matrix_ModelC_tie.rds")
+saveRDS(fractions_matrix, "fractions_matrix_ModelC_tie.rds")
 
 # Plot the trajectories
 matplot(fractions_matrix, type = "l", lty = 1, col = rgb(1, 0, 0, 0.2),
