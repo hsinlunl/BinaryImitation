@@ -1,8 +1,8 @@
 library(igraph)
 
 # Parameters
-q_s <- 0.3
-q_d <- 0.3
+q_s <- 0.9
+q_d <- 0.9
 n <- 1000
 simulations <- 1000
 max_iter <- 10000
@@ -21,7 +21,7 @@ is_global_tie <- function(g, opinions) {
 
 # Function: run one simulation and record fractions
 run_model_c_tie_record <- function(g) {
-  opinions <- sample(c(0, 1), vcount(g), replace = TRUE)
+  opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(0.3, 0.7))  # 70% agents start with 1
   opinion_frac <- numeric(max_iter)
 
   for (t in 1:max_iter) {
