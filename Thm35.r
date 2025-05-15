@@ -4,7 +4,7 @@ library(igraph)
 q_s <- 0.3
 q_d <- 0
 n <- 1000
-simulations <- 1
+simulations <- 1000
 max_iter <- 10^5
 
 # Function: check if current state is a global tie
