@@ -1,7 +1,7 @@
 library(igraph)
 
 # Parameters
-q_s <- 0.1
+q_s <- 0.3
 q_d <- 0
 n <- 1000
 simulations <- 1
