@@ -1,10 +1,10 @@
 library(igraph)
 
 # Parameters
-q_s <- 0.1
+q_s <- 0.3
 q_d <- 0.001
 n <- 1000
-simulations <- 1
+simulations <- 1000
 max_iter <- 10^5
 
 # Function: check if current state is a global tie
@@ -21,8 +21,8 @@ is_global_tie <- function(g, opinions) {
 
 # Function: run one simulation and record fractions
 run_model_c_tie_record <- function(g) {
-  #opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(0.2, 0.8))  # 80% agents start with 1
-  opinions <- sample(c(0, 1), n, replace = TRUE)
+  opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(0.3, 0.7))  # 70% agents start with 1
+  #opinions <- sample(c(0, 1), n, replace = TRUE)
 #opinions <- c(rep(c(0,1), each=n/4), rep(c(0,1), each=n/4))
   opinion_frac <- numeric(max_iter)
 
