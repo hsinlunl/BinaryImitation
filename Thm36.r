@@ -2,7 +2,7 @@ library(igraph)
 
 # Parameters
 q_s <- 0.3
-q_d <- 0.001
+q_d <- 10^-5
 n <- 1000
 simulations <- 1000
 max_iter <- 10^5
@@ -27,7 +27,7 @@ run_model_c_tie_record <- function(g) {
   opinion_frac <- numeric(max_iter)
 
   for (t in 1:max_iter) {
-if (t %% 100 == 0) cat("Completed", t, "iterations\n")
+#if (t %% 100000 == 0) cat("Completed", t, "iterations\n")
 
     k <- sample(1:vcount(g), 1)
     neigh <- neighbors(g, k)
