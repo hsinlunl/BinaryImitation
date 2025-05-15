@@ -4,50 +4,65 @@ library(igraph)
 q_s <- 0.1
 q_d <- 0
 n <- 1000
-simulations <- 1000
-max_iter <- 10000  # To keep plots readable
+simulations <- 1
+max_iter <- 10^5
 
-# Create a connected graph
-set.seed(42)
-repeat {
-  g <- sample_gnp(n, p = 0.1)
-  if (is.connected(g)) break
+# Function: check if current state is a global tie
+is_global_tie <- function(g, opinions) {
+  for (k in 1:vcount(g)) {
+    neigh <- neighbors(g, k)
+    if (length(neigh) == 0) next
+    same <- sum(opinions[neigh] == opinions[k])
+    diff <- length(neigh) - same
+    if (same != diff) return(FALSE)
+  }
+  return(TRUE)
 }
 
-# Function to run one simulation and record the opinion 1 fraction
-simulate_one_model_c <- function(g) {
-  opinions <- sample(c(0, 1), vcount(g), replace = TRUE)
-  fractions <- numeric(max_iter)
-  
+# Function: run one simulation and record fractions
+run_model_c_tie_record <- function(g) {
+  r <- runif(1)
+  opinions <- sample(c(0, 1), n, replace = TRUE, prob = c(1-r, r))  # r agents start with 1
+ # opinions <- sample(c(0, 1), n, replace = TRUE)
+#opinions <- c(rep(c(0,1), each=n/4), rep(c(0,1), each=n/4))
+  opinion_frac <- numeric(max_iter)
+
   for (t in 1:max_iter) {
-    fractions[t] <- mean(opinions)
-    
+if (t %% 100 == 0) cat("Completed", t, "iterations\n")
+
     k <- sample(1:vcount(g), 1)
-    neighbors_k <- neighbors(g, k)
-    if (length(neighbors_k) == 0) next
-    
-    same <- sum(opinions[neighbors_k] == opinions[k])
-    diff <- length(neighbors_k) - same
-    
+    neigh <- neighbors(g, k)
+    if (length(neigh) == 0) next
+    same <- sum(opinions[neigh] == opinions[k])
+    diff <- length(neigh) - same
+
     if (diff > same) {
       if (runif(1) < q_d) opinions[k] <- 1 - opinions[k]
     } else if (same > diff) {
       if (runif(1) < q_s) opinions[k] <- 1 - opinions[k]
     }
-    
-    if (all(opinions == 0) || all(opinions == 1)) {
-      fractions[(t+1):max_iter] <- mean(opinions)
+
+    opinion_frac[t] <- mean(opinions)
+
+    if (is_global_tie(g, opinions)) {
+      opinion_frac[(t + 1):max_iter] <- opinion_frac[t]
       break
     }
   }
-  
-  return(fractions)
+  return(opinion_frac)
 }
 
-# Run 1000 simulations
+set.seed(123)
+#g <- make_ring(n)
+#repeat{
+#  g <- sample_k_regular(no.of.nodes = n, k = 6)
+#  if(is.connected(g)) break
+#}
+g <- make_full_bipartite_graph(n/2, n/2)
+# Run simulations
 fractions_matrix <- matrix(NA, nrow = max_iter, ncol = simulations)
 for (i in 1:simulations) {
-  fractions_matrix[, i] <- simulate_one_model_c(g)
+  fractions_matrix[, i] <- run_model_c_tie_record(g)
   if (i %% 100 == 0) cat("Completed", i, "simulations\n")
 }
 
