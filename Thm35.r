@@ -5,7 +5,7 @@ q_s <- 0.8
 q_d <- 0
 n <- 1000
 simulations <- 1000
-max_iter <- 30000
+max_iter <- 20000
 
 # Function: check if current state is a global tie
 is_global_tie <- function(g, opinions) {
